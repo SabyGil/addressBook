@@ -11,7 +11,8 @@ class AddContact extends React.Component {
         number: '203.752.8089',
         address: '1817 Purdy'
       }
-
+      this.handleClick = this.handleClick.bind(this);
+      // this.handleChange = this.handleChange.bind(this);
   }
 
   handleClick (event){
@@ -23,6 +24,9 @@ class AddContact extends React.Component {
       address: event.target.address
     });
   }
+
+  //need handleChange func
+  //need handleClick.bind so this contect won't get lost
 
 // We are rendering the AddressBook Child Component
   render(){
