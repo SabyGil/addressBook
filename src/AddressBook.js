@@ -1,8 +1,10 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 
-export default function AddressBook(property){
-  console.log('this is the props from the parent', property)
+class AddressBook extends React.Component {
+  // console.log('this is the props from the parent', property)
+  render(){
+    //debugger
     return (
       <Table>
         <thead>
@@ -16,11 +18,14 @@ export default function AddressBook(property){
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>{property.name}</td>
-            <td>{property.number}</td>
-            <td>{property.address}</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </Table>
     );
   }
+}
+
+export default AddressBook;
