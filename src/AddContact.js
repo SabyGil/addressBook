@@ -7,26 +7,21 @@ class AddContact extends React.Component {
   constructor(){
     super();
       this.state= {
-        newInput: ''
+        name: '',
+        number: '',
+        address: ''
       }
-      this.handleClick = this.handleClick.bind(this);
+      // this.handleClick = this.handleClick.bind(this);
       this.handleChange = this.handleChange.bind(this);
   }
 
-  handleClick (event){
-    event.preventDefault(event);
-
-    this.setState({
-      // name: event.target.name,
-      // number: event.target.number,
-      // address: event.target.address
-      newInput: ''
-    });
-  }
 
   handleChange (event) {
+    event.preventDefault(event);
     this.setState({
-      newInput: event.target.value
+      name: event.target.value,
+      number: event.target.value,
+      address: event.target.value
     });
   }
 
@@ -53,15 +48,15 @@ class AddContact extends React.Component {
 // We are rendering the AddressBook Child Component
 
   render(){
-    let contactItem;
-    if(this.props.info){
-      contactItem = this.props.info.map(item => {
-        // console.log(item);
-        return (
-          <AddressBook key={item.name} item={item} />
-        );
-      });
-    }
+    // let contactItem;
+    // // if(this.props.info){
+    //   contactItem = this.state.map(item => {
+    //     // console.log(item);
+    //     return (
+    //       <AddressBook key={item.name} item={item} />
+    //     );
+    //   });
+
 // debugger
     return (
       <div>
@@ -73,7 +68,7 @@ class AddContact extends React.Component {
               type="text"
               name="name"
               placeholder="with a placeholder"
-              // value= {this.props.info[0].name}
+              value= {this.state.name}
               onChange={ this.handleChange }
           />
          </FormGroup>
@@ -102,8 +97,8 @@ class AddContact extends React.Component {
          <Button onClick={this.handleClick}> Submit </Button>
         </Form>
         <br />
+        {/*contactItem*/}
 
-          {contactItem}
 
       </div>
     );
