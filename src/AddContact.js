@@ -7,79 +7,95 @@ class AddContact extends React.Component {
   constructor(){
     super();
       this.state= {
-        name: '',
-        number: '',
-        address: ''
-      }
+        contacts: []
+      };
       // this.handleClick = this.handleClick.bind(this);
       this.handleChange = this.handleChange.bind(this);
   }
 
 
-  handleChange (event) {
-    event.preventDefault(event);
+  handleChange(e) {
+    e.preventDefault(e);
     this.setState({
-      name: event.target.value,
-      number: event.target.value,
-      address: event.target.value
+      firstName: e.target.value,
+      lastName: e.target.value,
+      number: e.target.value,
+      address: e.target.value
     });
   }
 
-  handleUpdate(change){
-  this.setState({
-    tasks: this.state.tasks.map(task => task === change[0] ?
-            // transform the one with a matching name
-            change[1]  :
-            // otherwise return original task
-            task
-          )
-    })
+  addContact(e){
+    e.preventDefault();
+    let firstName = this.refs.firstName.value;
+    let lastName = this.refs.lastName.value;
+    let number = this.refs.number.value;
+    let address = this.refs.address.value;
+
+    // let id = Math.floor((Math.random() * 100) + 1);
+    // console.log(this.refs.name.value);
+    this.setState({
+      contacts: this.state.contacts.concat({ firstName, lastName, number, address })
+    });
+    this.refs.firstName.value = '';
+    this.refs.lastName.value = '';
+    this.refs.number.value = '';
+    this.refs.address.value = '';
   }
-  // handleUpdate (event) {
-  //   this.setState({
-  //     newInput = event.target.value
-  //
+
+  // handleUpdate(change){
+  // this.setState({
+  //   tasks: this.state.tasks.map(task => task === change[0] ?
+  //           // transform the one with a matching name
+  //           change[1]  :
+  //           // otherwise return original task
+  //           task
+  //         )
   //   })
   // }
-
-  //need handleChange func
-  //need handleClick.bind so this contect won't get lost
 
 // We are rendering the AddressBook Child Component
 
   render(){
-    // let contactItem;
-    // // if(this.props.info){
-    //   contactItem = this.state.map(item => {
-    //     // console.log(item);
-    //     return (
-    //       <AddressBook key={item.name} item={item} />
-    //     );
-    //   });
+
+    // let filteredContacts = this.state.contacts.filter((contact) => {
+    //     return contact.firstName.indexOf(this.state.contacts) !== -1;
+    //   }
+    // );
+    // let contacts = this.state.contacts.map((contact, index) => {
+    //   return <AddressBook key={index} contact={contact}/>
+    // });
+    let contacts = this.state.contacts;
 
 // debugger
     return (
       <div>
-      <h1>Add Contact </h1>
-        <Form>
+      <h1>Add Contact</h1>
+        <Form onSubmit={this.addContact.bind(this)}>
          <FormGroup>
-           <Label for="Name">Name: </Label>
+           <Label for="firstName">Firstname: </Label>
            <Input
               type="text"
-              name="name"
-              placeholder="with a placeholder"
-              value= {this.state.name}
+              ref="firstName"
+              placeholder="name"
+              value= {this.state.firstName}
               onChange={ this.handleChange }
           />
+          <Label for="lastName">Lastname: </Label>
+          <Input
+             type="text"
+             ref="lastName"
+             placeholder="name"
+             value= {this.state.lastName}
+             onChange={ this.handleChange }
+         />
          </FormGroup>
          <FormGroup>
            <Label for="Number">Number: </Label>
            <Input
-              type="text"
-              number="number"
-              id="examplePassword"
-              placeholder="number placeholder"
-              // value= {this.state.number}
+              type="Number"
+              ref="number"
+              placeholder="347..."
+              value= {this.state.number}
               onChange={ this.handleChange }
            />
          </FormGroup>
@@ -87,17 +103,19 @@ class AddContact extends React.Component {
            <Label for="Address">Address: </Label>
            <Input
               type="address"
-              address="address"
-              id="examplePassword"
-              placeholder="address placeholder"
-              // value={ this.state.address }
+              ref="address"
+              placeholder="101 Park ave..."
+              value={ this.state.address }
               onChange={ this.handleChange }
              />
          </FormGroup>
-         <Button onClick={this.handleClick}> Submit </Button>
+         <Button type="submit">Add New Contact</Button>
         </Form>
         <br />
-        {/*contactItem*/}
+
+        {contacts.map((contact, index) => {
+          return <AddressBook key={index} contact={contact}/>
+        })}
 
 
       </div>
