@@ -1,45 +1,47 @@
 import React from "react";
 import AddressBook from './AddressBook';
-import { Button, FormGroup, Label, Input, Form  } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 //class based Parent component
 class AddContact extends React.Component {
   constructor(){
     super();
       this.state= {
-        contacts: []
+        contacts: [],
+        firstName: '',
+        lastName: '',
+        number: '',
+        address:''
       };
-      // this.handleClick = this.handleClick.bind(this);
       this.handleChange = this.handleChange.bind(this);
   }
 
 
   handleChange(e) {
     e.preventDefault(e);
+    const target = e.target;
+    const x = target.name;
     this.setState({
-      firstName: e.target.value,
-      lastName: e.target.value,
-      number: e.target.value,
-      address: e.target.value
+      [x]: target.value
     });
   }
 
   addContact(e){
     e.preventDefault();
-    let firstName = this.refs.firstName.value;
-    let lastName = this.refs.lastName.value;
-    let number = this.refs.number.value;
-    let address = this.refs.address.value;
 
-    // let id = Math.floor((Math.random() * 100) + 1);
-    // console.log(this.refs.name.value);
     this.setState({
-      contacts: this.state.contacts.concat({ firstName, lastName, number, address })
+      contacts: this.state.contacts.concat({
+        firstName:this.state.firstName,
+        lastName: this.state.lastName,
+        number: this.state.number,
+        address: this.state.address
+      }),
+      firstName: '',
+      lastName: '',
+      number: '',
+      address: ''
+
     });
-    this.refs.firstName.value = '';
-    this.refs.lastName.value = '';
-    this.refs.number.value = '';
-    this.refs.address.value = '';
   }
 
   // handleUpdate(change){
@@ -71,9 +73,10 @@ class AddContact extends React.Component {
       <div>
       <h1>Add Contact</h1>
         <Form onSubmit={this.addContact.bind(this)}>
-         <FormGroup>
+         <FormGroup className="FormGroup">
            <Label for="firstName">Firstname: </Label>
            <Input
+              name="firstName"
               type="text"
               ref="firstName"
               placeholder="name"
@@ -82,6 +85,7 @@ class AddContact extends React.Component {
           />
           <Label for="lastName">Lastname: </Label>
           <Input
+             name="lastName"
              type="text"
              ref="lastName"
              placeholder="name"
@@ -92,6 +96,7 @@ class AddContact extends React.Component {
          <FormGroup>
            <Label for="Number">Number: </Label>
            <Input
+              name="number"
               type="Number"
               ref="number"
               placeholder="347..."
@@ -102,6 +107,7 @@ class AddContact extends React.Component {
          <FormGroup>
            <Label for="Address">Address: </Label>
            <Input
+              name="address"
               type="address"
               ref="address"
               placeholder="101 Park ave..."
@@ -109,7 +115,7 @@ class AddContact extends React.Component {
               onChange={ this.handleChange }
              />
          </FormGroup>
-         <Button type="submit">Add New Contact</Button>
+         <Button className="Button" type="submit">Add New Contact</Button>
         </Form>
         <br />
 
