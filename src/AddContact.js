@@ -1,6 +1,7 @@
 import React from "react";
 import AddressBook from './AddressBook';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 //class based Parent component
 class AddContact extends React.Component {
@@ -14,6 +15,8 @@ class AddContact extends React.Component {
         address:''
       };
       this.handleChange = this.handleChange.bind(this);
+      this.handleDelete = this.handleDelete.bind(this)
+
   }
 
 
@@ -44,31 +47,16 @@ class AddContact extends React.Component {
     });
   }
 
-  // handleUpdate(change){
-  // this.setState({
-  //   tasks: this.state.tasks.map(task => task === change[0] ?
-  //           // transform the one with a matching name
-  //           change[1]  :
-  //           // otherwise return original task
-  //           task
-  //         )
-  //   })
-  // }
+  handleDelete(e){
+   this.setState({
+     contacts: this.state.contacts.filter( (contact) => contact !== e)
+   })
+ }
 
-// We are rendering the AddressBook Child Component
 
   render(){
-
-    // let filteredContacts = this.state.contacts.filter((contact) => {
-    //     return contact.firstName.indexOf(this.state.contacts) !== -1;
-    //   }
-    // );
-    // let contacts = this.state.contacts.map((contact, index) => {
-    //   return <AddressBook key={index} contact={contact}/>
-    // });
     let contacts = this.state.contacts;
 
-// debugger
     return (
       <div>
       <h1>Add Contact</h1>
@@ -78,8 +66,7 @@ class AddContact extends React.Component {
            <Input
               name="firstName"
               type="text"
-              ref="firstName"
-              placeholder="name"
+              placeholder="firstname"
               value= {this.state.firstName}
               onChange={ this.handleChange }
           />
@@ -87,8 +74,7 @@ class AddContact extends React.Component {
           <Input
              name="lastName"
              type="text"
-             ref="lastName"
-             placeholder="name"
+             placeholder="lastname"
              value= {this.state.lastName}
              onChange={ this.handleChange }
          />
@@ -118,15 +104,20 @@ class AddContact extends React.Component {
          <Button className="Button" type="submit">Add New Contact</Button>
         </Form>
         <br />
-
         {contacts.map((contact, index) => {
-          return <AddressBook key={index} contact={contact}/>
+          return <AddressBook key={index} contact={contact} del={this.handleDelete}/>
         })}
-
 
       </div>
     );
   }
+}
+
+AddContact.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
+  address: PropTypes.string.isRequired
 }
 
 export default AddContact;
