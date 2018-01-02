@@ -1,5 +1,8 @@
 import React from 'react';
-import AddContact from './AddContact';
+// import AddContact from './components/AddContact';
+import Main from './components/Main';
+import Navbar from './components/Navbar';
+// import { Navbar } from 'reactstrap';
 
 // let contacts = [
 //   {
@@ -18,7 +21,9 @@ import AddContact from './AddContact';
 const App = () => {
   return (
       <div>
-        <AddContact  />
+        {/* <AddContact  /> */}
+      <Navbar />
+        <Main />
       </div>
     );
 }
