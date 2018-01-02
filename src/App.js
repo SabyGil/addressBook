@@ -1,5 +1,7 @@
 import React from 'react';
-import AddContact from './AddContact';
+// import AddContact from './AddContact';
+import Main from './Main';
+import Navbar from './Navbar';
 
 // let contacts = [
 //   {
@@ -18,7 +20,9 @@ import AddContact from './AddContact';
 const App = () => {
   return (
       <div>
-        <AddContact  />
+        {/* <AddContact  /> */}
+        <Navbar />
+        <Main />
       </div>
     );
 }
