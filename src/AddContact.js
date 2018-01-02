@@ -14,6 +14,7 @@ class AddContact extends React.Component {
         address:''
       };
       this.handleChange = this.handleChange.bind(this);
+      this.handleDelete = this.handleDelete.bind(this);
   }
 
 
@@ -44,14 +45,17 @@ class AddContact extends React.Component {
     });
   }
 
-  // handleUpdate(change){
-  // this.setState({
-  //   tasks: this.state.tasks.map(task => task === change[0] ?
-  //           // transform the one with a matching name
-  //           change[1]  :
-  //           // otherwise return original task
-  //           task
-  //         )
+
+
+  handleDelete(e) {
+    this.setState({
+      contacts: this.state.contacts.filter((contact) => contact !== e)
+      })
+  }
+
+  // handleDelete(e){
+  //   this.setState({
+  //     tasks: this.state.tasks.filter( (task)=> task !== e)
   //   })
   // }
 
@@ -116,13 +120,15 @@ class AddContact extends React.Component {
              />
          </FormGroup>
          <Button className="Button" type="submit">Add New Contact</Button>
+
         </Form>
+        <Button onClick={ this.handleDelete }> Delete</Button>
+
         <br />
 
         {contacts.map((contact, index) => {
           return <AddressBook key={index} contact={contact}/>
         })}
-
 
       </div>
     );
