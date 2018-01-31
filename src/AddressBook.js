@@ -27,4 +27,4 @@ const AddressBook = ({contact}) => {
     );
 }
 
-export default AddressBook;
+// export default AddressBook;

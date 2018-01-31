@@ -1,6 +1,6 @@
-// import React from "react";
-// import AddressBook from './AddressBook';
-// import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import React from "react";
+import { connect } from 'react-redux';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 //class based Parent component
 class AddContact extends React.Component {
@@ -30,22 +30,15 @@ class AddContact extends React.Component {
   addContact(e){
     e.preventDefault();
 
-    this.setState({
-      contacts: this.state.contacts.concat({
+    this.props.dispatch({
+    contacts: this.state.contacts.concat({
         firstName:this.state.firstName,
         lastName: this.state.lastName,
         number: this.state.number,
         address: this.state.address
-      }),
-      firstName: '',
-      lastName: '',
-      number: '',
-      address: ''
-
-    });
+      )}
+    )}
   }
-
-
 
   handleDelete(e) {
     this.setState({
@@ -55,13 +48,9 @@ class AddContact extends React.Component {
 
   render(){
 
-    // let filteredContacts = this.state.contacts.filter((contact) => {
-    //     return contact.firstName.indexOf(this.state.contacts) !== -1;
-    //   }
-    // );
-    let contacts = this.props.contacts.map((contact, index) => {
-      return <li key={index}> {contact} </>
-    });
+    // let contacts = this.props.contacts.map((contact, index) => {
+    //   return <li key={index}> {contact} </li>
+    // });
     // let contacts = this.state.contacts;
 
 // debugger
@@ -128,4 +117,4 @@ class AddContact extends React.Component {
 }
 
 // export default AddContact;
-// export const
+export default connect(undefined)(UserInput);

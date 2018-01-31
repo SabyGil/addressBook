@@ -1,6 +1,6 @@
 import React from 'react';
-import AddContact from './AddContact';
-
+import AddContact from './components/Contacts';
+import AddressBook  from './components/Contact';
 // let contacts = [
 //   {
 //     name: 'scott',
@@ -15,12 +15,16 @@ import AddContact from './AddContact';
 //     number: '333'
 //   }
 // ]
-const App = () => {
+class App extends React.Component {
+  render(){
+    // debugger
   return (
       <div>
         <AddContact  />
+        <AddressBook />
       </div>
     );
+  }
 }
 
 export default App;
