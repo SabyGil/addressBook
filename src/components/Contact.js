@@ -14,14 +14,14 @@ class AddressBook extends React.Component {
     e.preventDefault();
 
     this.props.dispatch({
-      type: 'DELETE_TODO',
-      contact: this.props.contact.contact,
+      type: 'DELETE_CONTACT',
+      contact: this.props.contact,
       id: this.props.contact.id
     })
   }
   // console.log('this is the props from the parent', property)
   render(){
-    //debugger
+    // debugger
     return (
       <Table>
         <thead>
@@ -39,7 +39,7 @@ class AddressBook extends React.Component {
             <td>{this.props.contact.lastName}</td>
             <td>{this.props.contact.number}</td>
             <td>{this.props.contact.address}</td>
-            <Button onClick={ this.handleDelete }> Delete</Button>
+            <Button onClick={ (event) => this.handleDelete(event) }> Delete</Button>
 
           </tr>
         </tbody>

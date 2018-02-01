@@ -1,6 +1,6 @@
 import React from 'react';
-import AddContact from './components/Contacts';
-import AddressBook  from './components/Contact';
+import AddContact from './components/UserInput';
+import Contacts  from './components/Contacts';
 // let contacts = [
 //   {
 //     name: 'scott',
@@ -21,7 +21,7 @@ class App extends React.Component {
   return (
       <div>
         <AddContact  />
-        <AddressBook />
+        <Contacts />
       </div>
     );
   }

@@ -4,11 +4,12 @@ export default function reducerContacts ( state = {
   }, action) {
   switch ( action.type ) {
     case 'ADD_CONTACT':
+    counter++;
       return Object.assign({}, state, {
         contacts: state.contacts.concat({ contact: action.contact, id: counter })
       });
 
-      case "DELETE_TODO":
+      case "DELETE_CONTACT":
        return Object.assign({}, state, {
          contacts: state.contacts.filter((contact) => contact.id !== action.id)
        });
