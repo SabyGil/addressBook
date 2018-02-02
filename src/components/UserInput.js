@@ -1,8 +1,6 @@
 import React from "react";
-// import AddressBook from './Contact';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
-
 
 //class based Parent component
 class AddContact extends React.Component {
@@ -16,16 +14,15 @@ class AddContact extends React.Component {
         address:''
       };
       this.handleChange = this.handleChange.bind(this);
-      // this.handleDelete = this.handleDelete.bind(this);
   }
 
 
   handleChange(e) {
     e.preventDefault(e);
     const target = e.target;
-    const x = target.name;
+    const name = target.name;
     this.setState({
-      [x]: target.value
+      [name]: target.value
     });
   }
 
@@ -46,31 +43,12 @@ class AddContact extends React.Component {
       address: ''
     })
 }
-// firstName:this.state.firstName,
-// lastName: this.state.lastName,
-// number: this.state.number,
-// address: this.state.address
-//
-// contacts: this.state.contacts.concat({
-//   firstName:this.state.firstName,
-//   lastName: this.state.lastName,
-//   number: this.state.number,
-//   address: this.state.address
-// })
+
   render(){
 
-    // let contacts = this.props.contacts.map((contact, index) => {
-    //   return <li key={index}> {contact} </li>
-    // });
-    let contacts = this.state.contacts;
-    let firstName = this.state.firstName;
-    let lastName= this.state.lastName;
-    let number= this.state.number;
-    let address= this.state.address;
-// debugger
     return (
       <div>
-      <h1>Add Contact</h1>
+      <h1>Add A Contact</h1>
         <Form onSubmit={(event) => this.addContact(event)}>
          <FormGroup className="FormGroup">
            <Label for="firstName">Firstname: </Label>
@@ -115,21 +93,11 @@ class AddContact extends React.Component {
              />
          </FormGroup>
          <Button className="Button" type="submit">Add New Contact</Button>
-
         </Form>
-
         <br />
-
       </div>
     );
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     contacts: state.contacts
-//   };
-// };
-
-// export default AddContact;
 export default connect(undefined)(AddContact);

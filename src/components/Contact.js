@@ -2,14 +2,7 @@ import React from 'react';
 import { Table , Button } from 'reactstrap';
 import { connect } from "react-redux";
 
-
-class AddressBook extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-
-    }
-  }
+class AddressBook extends React.Component  {
   handleDelete(e) {
     e.preventDefault();
 
@@ -19,15 +12,14 @@ class AddressBook extends React.Component {
       id: this.props.contact.id
     })
   }
-  // console.log('this is the props from the parent', property)
   render(){
-    // debugger
     return (
-      <Table>
+      <div>
+      <Table bordered>
         <thead>
           <tr>
             <th> row </th>
-          <th>First Name</th>
+            <th>First Name</th>
             <th>Last Name</th>
             <th>#</th>
             <th>Address</th>
@@ -40,14 +32,13 @@ class AddressBook extends React.Component {
             <td>{this.props.contact.lastName}</td>
             <td>{this.props.contact.number}</td>
             <td>{this.props.contact.address}</td>
-            <Button onClick={ (event) => this.handleDelete(event) }> Delete</Button>
+            <td><Button onClick={ (event) => this.handleDelete(event) }> Delete</Button></td>
 
           </tr>
         </tbody>
       </Table>
+    </div>
     );
   }
 }
 export default connect(undefined)(AddressBook);
-
-// export default AddressBook;
