@@ -8,15 +8,20 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
+import { BrowserRouter } from 'react-router-dom';
+
+
 import reducerContacts from './reducers/reducer_contacts';
 
 let store = createStore(reducerContacts);
 
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App store={store} />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store}>
+      <App store={store} />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 registerServiceWorker();

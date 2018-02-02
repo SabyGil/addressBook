@@ -9,12 +9,7 @@ class Contacts extends React.Component {
 
 
   render(){
-    // let contacts = this.props.contacts.map((contact, index) => {
-    //   return <li key={index}> {contact} </li>
-    // });
-    // let contacts = this.state.contacts;
     const contacts = this.props.contacts.map((contact, index) => <AddressBook key={index} contact={contact} />)
-
 // debugger
     return (
       <div>

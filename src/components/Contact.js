@@ -26,6 +26,7 @@ class AddressBook extends React.Component {
       <Table>
         <thead>
           <tr>
+            <th> row </th>
           <th>First Name</th>
             <th>Last Name</th>
             <th>#</th>
@@ -34,7 +35,7 @@ class AddressBook extends React.Component {
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
+            <th scope="row">{this.props.contact.id}</th>
             <td>{this.props.contact.firstName}</td>
             <td>{this.props.contact.lastName}</td>
             <td>{this.props.contact.number}</td>

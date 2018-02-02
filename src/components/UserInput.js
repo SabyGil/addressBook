@@ -38,11 +38,19 @@ class AddContact extends React.Component {
       lastName: this.state.lastName,
       number: this.state.number,
       address: this.state.address
-      // contacts: this.state.contacts
-
-  })
+    })
+    this.setState({
+      firstName: '',
+      lastName: '',
+      number: '',
+      address: ''
+    })
 }
-
+// firstName:this.state.firstName,
+// lastName: this.state.lastName,
+// number: this.state.number,
+// address: this.state.address
+//
 // contacts: this.state.contacts.concat({
 //   firstName:this.state.firstName,
 //   lastName: this.state.lastName,
@@ -54,8 +62,11 @@ class AddContact extends React.Component {
     // let contacts = this.props.contacts.map((contact, index) => {
     //   return <li key={index}> {contact} </li>
     // });
-    // let contacts = this.state.contacts;
-    let firstName = this.state.firstName
+    let contacts = this.state.contacts;
+    let firstName = this.state.firstName;
+    let lastName= this.state.lastName;
+    let number= this.state.number;
+    let address= this.state.address;
 // debugger
     return (
       <div>
@@ -108,10 +119,6 @@ class AddContact extends React.Component {
         </Form>
 
         <br />
-
-        {/* {contacts.map((contact, index) => {
-          return <AddressBook key={index} contact={contact}/>
-        })} */}
 
       </div>
     );

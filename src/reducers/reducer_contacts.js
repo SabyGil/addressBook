@@ -6,7 +6,12 @@ export default function reducerContacts ( state = {
     case 'ADD_CONTACT':
     counter++;
       return Object.assign({}, state, {
-        contacts: state.contacts.concat({ contact: action.contact, id: counter })
+        contacts: state.contacts.concat({
+          firstName: action.firstName,
+          lastName: action.lastName,
+          number: action.number,
+          address: action.address,
+          id: counter })
       });
 
       case "DELETE_CONTACT":
